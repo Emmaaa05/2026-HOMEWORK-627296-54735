@@ -8,7 +8,7 @@
  * E' collegata ad altre stanze attraverso delle uscite.
  * Ogni uscita e' associata ad una direzione.
  * 
- * @author
+ * @author docente di POO
  * @see Attrezzo
  * @version base
 */
