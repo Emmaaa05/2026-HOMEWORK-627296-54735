@@ -14,39 +14,69 @@ class StanzaTest {
 		a = new Attrezzo("martello",5);
 	}
 	
-	/* per testare la funzione addAttrezzo, normalmente e al limite*/
+	/* Test addAttrezzo*/
 	@Test
-	void testAddAttrezzo() {
+	void testAddAttrezzoNormale() {
 		assertTrue(s1.addAttrezzo(a));
-		
+	}
+	
+	void testAddAttrezzoStanzaPiena() {
 		for(int i=0; i<10; i++)
 	        s1.addAttrezzo(new Attrezzo("att"+i, 1));
 		assertFalse(s1.addAttrezzo(a));
 	}
 
-	/* per testare la funzione hasAttrezzo*/
+	/* Test hasAttrezzo*/
 	@Test
-	void testHasAttrezzo() {
+	void testHasAttrezzoPresente() {
 		s1.addAttrezzo(a);
-		assertTrue(s1.addAttrezzo(a));
 		assertTrue(s1.hasAttrezzo(a.getNome()));
+	}
+	
+	void testHasAttrezzoAssente() {
 		assertFalse(s1.hasAttrezzo("cacciavite"));
 	}
 	
-	/* per testare la funzione getAttrezzo */
-	@Test
-	void testGetAttrezzo() {
+	void testHasAttrezzoDopoAggiunta() {
 		s1.addAttrezzo(a);
-		assertTrue(s1.addAttrezzo(a));
+		assertTrue(s1.hasAttrezzo("martello"));
+	}
+	
+	
+	/* Test getAttrezzo */
+	@Test
+	void testGetAttrezzoPresente() {
+		s1.addAttrezzo(a);
 		assertEquals(a,s1.getAttrezzo(a.getNome()));
 	}
 	
+	void testGetAttrezzoAssente() {
+		s1.addAttrezzo(a);
+		assertNull(s1.getAttrezzo("cacciavite"));
+	}
 	
+	void testGetAttrezzoDopoAggiunta() {
+		s1.addAttrezzo(a);
+		assertNotNull(s1.getAttrezzo(a.getNome()));
+	}
+	
+	
+	/* Test setStanzaAdiacente*/
 	@Test
-	void testSetStanzAdiacente() {
+	void testSetStanzAdiacentePresente() {
 		s1.impostaStanzaAdiacente("nord",s2);
 		assertEquals(s2,s1.getStanzaAdiacente("nord"));
+	}
+	
+	void testSetStanzAdiacenteAssente() {
+		assertNull(s1.getStanzaAdiacente("nord"));
+	}
+	
+	void testSetStanzAdiacenteDirezioneDiversa() {
+		s1.impostaStanzaAdiacente("nord",s2);
 		assertNull(s1.getStanzaAdiacente("sud"));
 	}
 	
+	
+}
 }
