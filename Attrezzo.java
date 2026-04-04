@@ -8,7 +8,7 @@
  * del labirinto.
  * Ogni attrezzo ha un nome ed un peso.
  *
- * @author  docente di POO
+ * @author 
  * @see Stanza
  * @version base
  */
