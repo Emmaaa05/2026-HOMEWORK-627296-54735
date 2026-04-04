@@ -5,7 +5,7 @@
 /**
  * Questa classe modella una partita del gioco
  *
- * @author
+ * @author docente di POO
  * @see Stanza
  * @version base
  */
