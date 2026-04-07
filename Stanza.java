@@ -119,17 +119,24 @@ public class Stanza {
 	* stampadone la descrizione, le uscite e gli eventuali attrezzi contenuti
 	* @return la rappresentazione stringa
 	*/
-    public String toString() {
+   public String toString() {
     	StringBuilder risultato = new StringBuilder();
     	risultato.append(this.nome);
     	risultato.append("\nUscite: ");
-    	for (String direzione : this.direzioni)
-    		if (direzione!=null)
-    			risultato.append(" " + direzione);
+    	if(numeroStanzeAdiacenti!=0) {
+    		for (String direzione : this.direzioni)
+    			if (direzione!=null)
+    				risultato.append(" " + direzione);
+    	}else
+    		risultato.append("non ci sono uscite");
+    	
     	risultato.append("\nAttrezzi nella stanza: ");
-    	for (Attrezzo attrezzo : this.attrezzi) {
-    		risultato.append(attrezzo.toString()+" ");
-    	}
+    	if(numeroAttrezzi!=0) {
+    		for (Attrezzo attrezzo : this.attrezzi) {
+    			risultato.append(attrezzo.toString()+" ");
+    		}
+    	} else
+    		risultato.append("non ci sono atrezzi");
     	return risultato.toString();
     }
 
