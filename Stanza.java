@@ -124,21 +124,21 @@ public class Stanza {
     	risultato.append(this.nome);
     	risultato.append("\nUscite: ");
     	if(numeroStanzeAdiacenti!=0) {
-    		for (String direzione : this.direzioni)
-    			if (direzione!=null)
-    				risultato.append(" " + direzione);
+    		for (int i=0; i<numeroStanzeAdiacenti; i++)
+    			risultato.append(" " + direzioni[i]);
     	}else
     		risultato.append("non ci sono uscite");
     	
     	risultato.append("\nAttrezzi nella stanza: ");
     	if(numeroAttrezzi!=0) {
-    		for (Attrezzo attrezzo : this.attrezzi) {
-    			risultato.append(attrezzo.toString()+" ");
+    		for (int i = 0; i < numeroAttrezzi; i++) {
+    			risultato.append(attrezzi[i].toString()+" ");
     		}
     	} else
     		risultato.append("non ci sono atrezzi");
     	return risultato.toString();
     }
+
 
     /**
 	* Controlla se un attrezzo esiste nella stanza (uguaglianza sul nome).
