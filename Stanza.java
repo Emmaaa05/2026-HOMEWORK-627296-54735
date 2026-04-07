@@ -205,7 +205,10 @@ public class Stanza {
 		return rimosso;
 	}
 
-
+	/**
+     * Restituisce le direzioni delle stanze adiacenti alla stanza corrente.
+     * @return lista di direzioni.
+     */
 	public String[] getDirezioni() {
 		String[] direzioni = new String[this.numeroStanzeAdiacenti];
 	    for(int i=0; i<this.numeroStanzeAdiacenti; i++)
