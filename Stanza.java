@@ -94,9 +94,25 @@ public class Stanza {
      * Restituisce la collezione di attrezzi presenti nella stanza.
      * @return la collezione di attrezzi nella stanza.
      */
-    public Attrezzo[] getAttrezzi() {
-        return this.attrezzi;
+    public String getAttrezzi() {
+    	StringBuilder risultato = new StringBuilder();
+    	risultato.append("\nAttrezzi nella stanza: ");
+    	if(numeroAttrezzi!=0) {
+    		for (int i = 0; i < numeroAttrezzi; i++) {
+    			risultato.append(attrezzi[i].toString()+" ");
+    		}
+    	} else
+    		risultato.append("non ci sono atrezzi");
+    	return risultato.toString();
     }
+
+	/**
+     * Restituisce il numero di attrezzi presenti nella stanza.
+     * @return numero di attrezzi.
+     */
+	public int getNumeroAttrezzi() {
+		return this.numeroAttrezzi;
+	}
 
     /**
      * Mette un attrezzo nella stanza.
