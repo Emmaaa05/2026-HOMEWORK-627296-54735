@@ -1,5 +1,6 @@
 package it.uniroma3.diadia;
 
+import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.io.IOConsole;
 
 //import it.uniroma3.diadia.io.IOConsole;
