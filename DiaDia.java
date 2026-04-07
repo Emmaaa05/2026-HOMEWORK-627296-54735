@@ -110,10 +110,12 @@ public class DiaDia {
 
 
 	/*Comando "Prendi"
-	 * Chiede all'utente l'attrezzo che vuole prendere. Controlla se
-	 * l'attrezzo e'presente nella stanza e se la borsa non e' piena,
-	 * e lo fa prendere dal giocatore, altrimenti stampa messaggio di errore.
-	 
+	 * Chiede all'utente l'attrezzo che vuole rimuovere. Controlla se
+	 * l'attrezzo e'presente bella stanza e se la borsa non e' piena,
+	 * e lo fa prendere dal giocatore per inserirlo nella sua borsa,
+	 * altrimenti stampa messaggio di errore. 
+	 * 
+	 * 
 	 * private void prendi() {
 	 	Stanza s=this.partita.getStanzaCorrente();
 		if(s.getNumeroAttrezzi()==0) {
@@ -133,18 +135,21 @@ public class DiaDia {
 			io.mostraMessaggio("La borsa e' piena, non puo' contenere ulteriori attrezzi");
 			return;
 		} else{
-			Attrezzo attrezzo= s.removeAttrezzo(nomeAtt);
+			Attrezzo attrezzo= s.getAttrezzo(nomeAtt);
 			if(this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzo))
-				io.mostraMessaggio(partita.giocatore.borsa.toString());
+				if(s.removeAttrezzo(nomeAtt) != "null"){
+					io.mostraMessaggio(partita.giocatore.borsa.toString());
+					io.mostraMessaggio("Hai preso l'attrezzo e l'hai messo nella tua borsa!");
+				}	
 			}
-		io.mostraMessaggio("Hai preso l'attrezzo e l'hai messo nella tua borsa!");	
 		}
 		
 		Comando "Posa"
-	 * Chiede all'utente l'attrezzo che vuole posare. Controlla se
-	 * l'attrezzo e'presente nella borsa e se la stanza non e' piena,
-	 * e lo fa prendere dal giocatore, altrimenti stampa messaggio di errore.
-	 
+		Chiede all'utente l'attrezzo che vuole posare. Controlla se
+	 	l'attrezzo e'presente nella borsa e se la stanza non e' piena,
+	 	e lo fa prendere dal giocatore, altrimenti stampa messaggio di errore.
+		
+		
 		private void posa() {
 		Borsa b = this.partita.getGiocatore().getBorsa();
 		if(b.isEmpty()) {
@@ -157,12 +162,17 @@ public class DiaDia {
 		if(!b.hasAttrezzo(nomeAtt)){
 			io.mostraMessaggio("L'attrezzo non e' presente nella borsa");
 			return;
-		} else {
-			Attrezzo attrezzo= b.removeAttrezzo(nomeAtt);
-			if(this.partita.getStanzaCorrente().addAttrezzo(attrezzo))
+		} else if(s.){
+			io.mostraMessaggio("");
+			return;
+		} else{
+			Attrezzo attrezzo= b.getAttrezzo(nomeAtt);
+			if(this.partita.getStanzaCorrente().addAttrezzo(attrezzo)){
+				if(b.removeAttrezzo(nomeAtt) != "null");
 				io.mostraMessaggio(partita.getStanzaCorrente().getAttrezzi());
+				io.mostraMessaggio("Hai preso l'attrezzo dalla tua borsa e l'hai posato nella stanza!");
+				}
 			}
-		io.mostraMessaggio("Hai preso l'attrezzo dalla tua borsa e l'hai posato nella stanza!");
 		}
 		*/
 	
