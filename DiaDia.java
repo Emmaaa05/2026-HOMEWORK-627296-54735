@@ -110,6 +110,10 @@ public class DiaDia {
 
 
 	/*Comando "Prendi"
+	 * Chiede all'utente l'attrezzo che vuole prendere. Controlla se
+	 * l'attrezzo e'presente nella stanza e se la borsa non e' piena,
+	 * e lo fa prendere dal giocatore, altrimenti stampa messaggio di errore.
+	 
 	 * private void prendi() {
 	 	Stanza s=this.partita.getStanzaCorrente();
 		if(s.getNumeroAttrezzi()==0) {
@@ -137,6 +141,10 @@ public class DiaDia {
 		}
 		
 		Comando "Posa"
+	 * Chiede all'utente l'attrezzo che vuole posare. Controlla se
+	 * l'attrezzo e'presente nella borsa e se la stanza non e' piena,
+	 * e lo fa prendere dal giocatore, altrimenti stampa messaggio di errore.
+	 
 		private void posa() {
 		Borsa b = this.partita.getGiocatore().getBorsa();
 		if(b.isEmpty()) {
