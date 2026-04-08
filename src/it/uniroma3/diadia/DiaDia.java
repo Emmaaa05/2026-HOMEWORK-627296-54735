@@ -31,7 +31,7 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 	
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine"};
+	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa"};
 
 	private Partita partita;
 	private IOConsole io;
@@ -64,6 +64,10 @@ public class DiaDia {
 			return true;
 		} else if (comandoDaEseguire.getNome().equals("vai"))
 			this.vai(comandoDaEseguire.getParametro());
+		else if (comandoDaEseguire.getNome().equals("prendi"))
+			this.prendi();
+		else if (comandoDaEseguire.getNome().equals("posa"))
+			this.posa();
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
 		else
@@ -106,6 +110,73 @@ public class DiaDia {
 		io.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 	}
 
+/*Comando "Prendi"
+	 Chiede all'utente l'attrezzo che vuole rimuovere. Controlla se
+	 l'attrezzo e'presente bella stanza e se la borsa non e' piena,
+	 e lo fa prendere dal giocatore per inserirlo nella sua borsa,
+	 altrimenti stampa messaggio di errore. 
+	 */
+	 
+	 private void prendi() {
+	 	Stanza s=this.partita.getStanzaCorrente();
+		if(s.getNumeroAttrezzi()==0) {
+			io.mostraMessaggio("Non ci sono attrezzi da in questa stanza");
+			return;
+			}
+			
+		String nomeAtt;
+		io.mostraMessaggio("Quale attrezzo vuoi prendere?");
+		nomeAtt=io.leggiRiga();
+		
+		Borsa b = this.partita.getGiocatore().getBorsa();
+		if(!s.hasAttrezzo(nomeAtt)){ 
+			io.mostraMessaggio("L'attrezzo non e' presente nella stanza corrente");
+			return;
+		} else if(b.getPeso() >= b.getPesoMax()){
+			io.mostraMessaggio("La borsa e' piena, non puo' contenere ulteriori attrezzi");
+			return;
+		} else{
+			Attrezzo attrezzo= s.getAttrezzo(nomeAtt);
+			if(this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzo))
+				if(s.removeAttrezzo(nomeAtt) != null){
+					io.mostraMessaggio(partita.getGiocatore().getBorsa().toString());
+					io.mostraMessaggio("Hai preso l'attrezzo e l'hai messo nella tua borsa!");
+				}	
+			}
+		}
+		
+		/*Comando "Posa"
+		Chiede all'utente l'attrezzo che vuole posare. Controlla se
+	 	l'attrezzo e'presente nella borsa e se la stanza non e' piena,
+	 	e lo fa prendere dal giocatore, altrimenti stampa messaggio di errore.
+		*/
+		
+		private void posa() {
+			Borsa b = this.partita.getGiocatore().getBorsa();
+			if(b.isEmpty()) {
+				io.mostraMessaggio("La borsa e' vuota");
+				return;}
+		
+			String nomeAtt = "null";
+			io.mostraMessaggio("Quale attrezzo vuoi posare?");
+			nomeAtt=io.leggiRiga();
+			if(!b.hasAttrezzo(nomeAtt)){
+				io.mostraMessaggio("L'attrezzo non e' presente nella borsa");
+				return;
+			} else if(this.partita.getStanzaCorrente().hasAttrezzo(nomeAtt)){
+				io.mostraMessaggio("");
+				return;
+			} else{
+				Attrezzo attrezzo= b.getAttrezzo(nomeAtt);
+				if(this.partita.getStanzaCorrente().addAttrezzo(attrezzo)){
+					if(b.removeAttrezzo(nomeAtt) != null);
+					io.mostraMessaggio(partita.getStanzaCorrente().getAttrezzi());
+					io.mostraMessaggio("Hai preso l'attrezzo dalla tua borsa e l'hai posato nella stanza!");
+				}
+			}
+		}
+
+	
 	/**
 	 * Comando "Fine".
 	 */
