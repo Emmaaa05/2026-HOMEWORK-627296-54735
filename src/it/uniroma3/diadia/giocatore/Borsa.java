@@ -53,11 +53,21 @@ public class Borsa {
 				return this.getAttrezzo(nomeAttrezzo)!=null; 
 	} 
 
-	public Attrezzo removeAttrezzo(String nomeAttrezzo) { 
-				Attrezzo a = null; 
-				// ---> TODO (implementare questo metodo) <-- 
-				return a; 
-	} 
+	public Attrezzo removeAttrezzo(String nomeAttrezzo) {
+		Attrezzo rimosso=null;
+		for (int i=0; i<numeroAttrezzi; i++) {
+			if (this.attrezzi[i].getNome().equals(nomeAttrezzo)){
+			rimosso = attrezzi[i];
+			for(int j=i; j<numeroAttrezzi; j++)
+				attrezzi[j]=attrezzi[j+1];
+			}
+			attrezzi[numeroAttrezzi-1]=null;
+			this.numeroAttrezzi--;
+			this.pesoMax=this.getPeso() - rimosso.getPeso();
+				}
+			return rimosso;
+	}
+	
 	public String toString() { 
 				StringBuilder s = new StringBuilder(); 
 				if (!this.isEmpty()) { 
