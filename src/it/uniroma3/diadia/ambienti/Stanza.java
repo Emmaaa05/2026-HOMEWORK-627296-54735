@@ -169,17 +169,17 @@ public class Stanza {
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public Attrezzo removeAttrezzo(String nomeAttrezzo) {
-		Attrezzo rimosso=null;
 		for (int i=0; i<numeroAttrezzi; i++) {
 			if (this.attrezzi[i].getNome().equals(nomeAttrezzo)){
-			rimosso = attrezzi[i];
+			Attrezzo rimosso = attrezzi[i];
 			for(int j=i; j<numeroAttrezzi; j++)
 				attrezzi[j]=attrezzi[j+1];
 			}
 			attrezzi[numeroAttrezzi-1]=null;
 			this.numeroAttrezzi--;
+			return rimosso;
 			}
-		return rimosso;
+		return null;
 	}
 
 
