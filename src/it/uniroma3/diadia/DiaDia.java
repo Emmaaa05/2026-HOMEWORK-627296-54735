@@ -165,11 +165,12 @@ public class DiaDia {
 			if(!b.hasAttrezzo(nomeAtt)){
 				io.mostraMessaggio("L'attrezzo non e' presente nella borsa");
 				return;
-			} else if(this.partita.getStanzaCorrente().hasAttrezzo(nomeAtt)){
-				io.mostraMessaggio("");
-				return;
-			} else{
+			} else{ 
 				Attrezzo attrezzo= b.getAttrezzo(nomeAtt);
+				if(!this.partita.getStanzaCorrente().addAttrezzo(attrezzo)){
+					io.mostraMessaggio("Non puoi posare attrezzi in questa stanza, perche' e' piena!");
+					return;
+				} else{
 				if(this.partita.getStanzaCorrente().addAttrezzo(attrezzo)){
 					if(b.removeAttrezzo(nomeAtt) != null);
 					io.mostraMessaggio(partita.getStanzaCorrente().getAttrezzi());
@@ -177,7 +178,7 @@ public class DiaDia {
 				}
 			}
 		}
-
+	}
 	
 	/**
 	 * Comando "Fine".
