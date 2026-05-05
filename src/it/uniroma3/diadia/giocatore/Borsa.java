@@ -1,5 +1,4 @@
 package it.uniroma3.diadia.giocatore;
-
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Borsa { 
@@ -59,10 +58,10 @@ public class Borsa {
 			Attrezzo rimosso = attrezzi[i];
 			for(int j=i; j<numeroAttrezzi-1; j++)
 				attrezzi[j]=attrezzi[j+1];
-				}
 			attrezzi[numeroAttrezzi-1]=null;
 			this.numeroAttrezzi--;
 			return rimosso;	
+			}
 		}
 			return null;
 	}

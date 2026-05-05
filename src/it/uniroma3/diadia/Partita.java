@@ -1,13 +1,12 @@
 package it.uniroma3.diadia;
-
-import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
-import it.uniroma3.diadia.giocatore.Giocatore;
+import it.uniroma3.diadia.giocatore.*;
+import it.uniroma3.diadia.ambienti.Labirinto;
 
 /**
  * Questa classe modella una partita del gioco
  *
- * @author docente di POO
+ * @author  docente di POO
  * @see Stanza
  * @version base
  */
@@ -43,6 +42,10 @@ public class Partita {
 		return this.stanzaCorrente;
 	}
 	
+	public Giocatore getGiocatore(){
+		return this.giocatore;
+	}
+	
 	/**
 	 * Restituisce vero se e solo se la partita e' stata vinta
 	 * @return vero se partita vinta
@@ -51,10 +54,6 @@ public class Partita {
 		return this.getStanzaCorrente()== this.getStanzaVincente();
 	}
 
-	public Giocatore getGiocatore(){
-		return this.giocatore();
-		}
-	
 	/**
 	 * Restituisce vero se e solo se la partita e' finita
 	 * @return vero se partita finita

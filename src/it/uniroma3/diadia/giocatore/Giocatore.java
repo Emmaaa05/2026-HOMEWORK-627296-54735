@@ -2,29 +2,31 @@ package it.uniroma3.diadia.giocatore;
 
 public class Giocatore {
 	
-	
-	private int cfu;
 	private Borsa borsa;
+	private int cfu;
 	
-	/* costruttore di Giocatore */
-	public Giocatore(int CFU_INIZIALI) {
-		this.cfu = CFU_INIZIALI;
+	public Giocatore(int cfu_iniziali) {
 		this.borsa = new Borsa();
-		
+		this.cfu=cfu_iniziali;
 	}
 	
-	/* getter e setter */
 	public int getCfu() {
 		return this.cfu;
 	}
-	
+
 	public void setCfu(int cfu) {
-		this.cfu = cfu;
-	}
+		this.cfu = cfu;		
+	}	
 	
 	public Borsa getBorsa() {
 		return this.borsa;
-		
 	}
-
+	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("Cfu a disposizione: " + this.getCfu() + "\n");
+		s.append(this.borsa.toString());
+		return s.toString();
+	}
+	
 }
